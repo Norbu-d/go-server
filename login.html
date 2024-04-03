@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+    <script>
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const submit_button = document.querySelector('button');
+    
+    submit_button.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log(username.value);
+        const username_value = username.value;
+        const password_value = password.value;
+
+
+        // make a request to localhost/auth
+        fetch ('http://localhost:8080/auth'),{
+            method: 'POST',
+            Headers: {
+                'Content-Types' : 'application/json'
+            },
+            body: JSON.stringify({
+                username: username_value,
+                password:  password_value
+            })
+
+        }
+    })
+    
+</script>
+    </script>
+    <div class="login-container">
+        <form action="" method="post">
+            <label for="username">Email:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+</body>
+</html>
